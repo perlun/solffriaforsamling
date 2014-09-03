@@ -1,3 +1,5 @@
+require 'kramdown'
+
 =begin
   Jekyll tag to include Markdown text from _includes directory preprocessing with Liquid.
   Usage:
@@ -11,7 +13,7 @@ module Jekyll
       super
       @text = text.strip
     end
-    require "kramdown"
+
     def render(context)
       tmpl = File.read(File.join(Dir.pwd, @text))
       site = context.registers[:site]
@@ -20,4 +22,5 @@ module Jekyll
     end
   end
 end
+
 Liquid::Template.register_tag('markdown', Jekyll::MarkdownTag)
