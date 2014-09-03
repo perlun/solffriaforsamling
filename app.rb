@@ -8,6 +8,7 @@ class App < Sinatra::Base
   set :logging, true
 
   get '/' do send_file 'site/index.html' end
+  get '/:slug/' do send_file "site/#{params[:slug]}/index.html" end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
